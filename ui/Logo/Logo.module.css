@@ -1,0 +1,15 @@
+.Logo {
+    font-family: "Segoe UI", serif;
+    font-weight: 700;
+    font-size: 26px;
+    cursor: pointer;
+    transition: color .15s ease-in-out;
+}
+
+.main {
+    color: #F29F05;
+}
+
+.main:hover {
+    color: #F27405;
+}
