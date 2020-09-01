@@ -1,0 +1,20 @@
+.RecipeCard {
+    background-color: #ffffff;
+    border-radius: 0.4rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.body {
+    padding: .3rem 1rem;
+}
+
+.img {
+    border-top-left-radius: calc(0.4rem - 1px);
+    border-top-right-radius: calc(0.4rem - 1px);
+    width: 100%;
+}
+
+.footer {
+
+}

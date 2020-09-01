@@ -6,7 +6,7 @@ export default function MainLayout({children}) {
     return (
         <div className={styles.MainLayoutWrap}>
             <Header/>
-            <main>
+            <main className="container">
                 {children}
             </main>
         </div>
