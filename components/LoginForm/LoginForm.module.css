@@ -1,0 +1,35 @@
+.LoginForm {
+    text-align: center;
+}
+
+.LoginForm > form {
+    margin-top: 2rem;
+}
+
+.LoginForm > h2 {
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin: 0 0 0.8rem 0;
+}
+
+.LoginForm > span {
+    color: #869ab8;
+    margin-bottom: 2rem;
+    font-size: .9rem;
+}
+
+.LoginForm > small {
+    display: block;
+    color: #869ab8;
+    margin: 2rem 0;
+    font-size: .8rem;
+}
+
+.LoginForm > small a {
+    color: #F29F05 !important;
+}
+
+.LoginForm > small a:hover {
+    color: #F27405 !important;
+    text-decoration: underline;
+}

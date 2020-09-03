@@ -1,38 +1,38 @@
-.btn {
-    font-family: "Segoe UI", sans-serif;
-    background-color: #F29F05;
-    color: white;
-    border: none;
-    box-sizing: border-box;
-    cursor: pointer;
+.Button {
     display: flex;
     align-items: center;
-    line-height: 1.6;
-    padding: .375rem .75rem;
+    box-sizing: border-box;
+    cursor: pointer;
     border-radius: .25rem;
-    font-size: 1rem;
-    font-weight: 600;
+    border: none;
+    margin: 0.2rem 0;
+    background-color: #F29F05;
+    color: white;
+    font-weight: 300;
     transition: background-color .15s ease-in-out;
+    padding: .6rem 1rem;
+    font-size: .9rem;
 }
 
-.btn:hover {
+.Button:focus {
+    outline: none;
+}
+
+.Button:hover {
     background-color: #F27405;
 }
 
-.large {
-    padding: .5625rem 1rem;
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    border-radius: .375rem;
+.lg {
+    padding: .8rem 1.2rem;
+    font-size: 1rem;
 }
-
 
 .icon {
     margin-right: .4rem;
     height: 1rem;
 }
 
-.large > .icon {
-    margin-right: .4rem;
-    height: 1rem;
+.block {
+    display: block;
+    width: 100%;
 }

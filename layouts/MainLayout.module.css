@@ -2,3 +2,8 @@
     background-color: #F9FBFD;
     min-height: 100vh;
 }
+
+.main {
+    position: relative;
+    top: 77px;
+}
