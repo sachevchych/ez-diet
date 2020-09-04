@@ -5,8 +5,15 @@ export default function Input(props) {
     const type = props.type || 'text'
     const classes = [
         styles.Input,
-        props.valid ? styles.inputSuccess : styles.inputError
     ]
+
+    if (props.valid && props.touched) {
+        classes.push(styles.inputSuccess)
+    }
+
+    if (!props.valid && props.touched) {
+        classes.push(styles.inputError)
+    }
 
     return (
         <div className={styles.InputGroup}>
@@ -16,8 +23,8 @@ export default function Input(props) {
                 type={type}
                 id={props.id}
                 placeholder={props.placeholder}
-                onChange={props.onChange}
                 value={props.value}
+                onChange={props.onChange}
             />
             <small className={styles.error}>{props.errorMessage}</small>
         </div>

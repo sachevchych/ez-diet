@@ -16,18 +16,18 @@
     border-radius: 1rem;
     display: flex;
     justify-content: flex-start;
+    width: 800px;
 }
 
 .ModalImageWrap {
     width: 50%;
-}
-
-.ModalImage {
+    background-repeat: no-repeat;
     border-top-left-radius: calc(1rem - 2px);
     border-bottom-left-radius: calc(1rem - 2px);
-    height: 100%;
-    width: 100%;
+    background-position: center;
+    background-size: cover;
 }
+
 
 .ModalContainer {
     width: 50%;

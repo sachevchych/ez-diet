@@ -25,7 +25,6 @@ function Header() {
                             </Modal>
                             : null
                     }
-
                 </div>
             </div>
         </header>

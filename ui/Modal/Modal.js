@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 export default function Modal(props) {
+    const picture = "/images/" + Math.floor(Math.random() * 10) + ".jpg"
+
     return (
         <div className={styles.Backdrop}>
             <div className={styles.Modal}>
-                <div className={styles.ModalImageWrap}>
-                    <img className={styles.ModalImage} src="https://picsum.photos/400/500" alt="Вхід"/>
+                <div className={styles.ModalImageWrap} style={{backgroundImage: `url(${picture})`}}>
                 </div>
                 <div className={styles.ModalContainer}>
                     <div className={styles.ModalHeader}>

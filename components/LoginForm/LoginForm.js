@@ -8,22 +8,37 @@ import {error} from "next/dist/build/output/log";
 export default function LoginForm() {
 
     const [loginValue, setLoginValue] = useState("")
-    const [loginValid, setLoginValid] = useState("")
-    const [passwordValue, setPasswordValue] = useState("")
-    const [passwordValid, setPasswordValid] = useState(false)
+    const [loginValid, setLoginValid] = useState(false)
+    const [loginIsTouched, setLoginIsTouched] = useState(false)
+    const [loginErrorMessage, setLoginErrorMessage] = useState(null)
 
-    function handlerLogin(password) {
-        setLoginValue(password)
-        setLoginValid(false)
+    function handlerLogin(login) {
+        setLoginValue(login)
+        setLoginIsTouched(true)
+        if (login.includes("@") && login.includes(".")) {
+            setLoginValid(true)
+            setLoginErrorMessage(null)
+        } else {
+            setLoginValid(false)
+            setLoginErrorMessage('Введіть електронну пошту')
+        }
 
     }
 
+    const [passwordValue, setPasswordValue] = useState("")
+    const [passwordValid, setPasswordValid] = useState(false)
+    const [passwordIsTouched, setPasswordIsTouched] = useState(false)
+    const [passwordErrorMessage, setErrorMessage] = useState(null)
+
     function handlerPassword(password) {
         setPasswordValue(password)
+        setPasswordIsTouched(true)
         if (password.length < 6) {
             setPasswordValid(false)
+            setErrorMessage("Пароль не може бути менше 6 символів")
         } else {
             setPasswordValid(true)
+            setErrorMessage('')
         }
     }
 
@@ -41,7 +56,10 @@ export default function LoginForm() {
                     placeholder="example@gmail.com"
                     value={loginValue}
                     valid={loginValid}
+                    touched={loginIsTouched}
+                    errorMessage={loginErrorMessage}
                     onChange={(event) => handlerLogin(event.target.value)}
+
                 />
                 <Input
                     type="password"
@@ -50,6 +68,8 @@ export default function LoginForm() {
                     placeholder="Введіть пароль"
                     value={passwordValue}
                     valid={passwordValid}
+                    touched={passwordIsTouched}
+                    errorMessage={passwordErrorMessage}
                     onChange={(event) => handlerPassword(event.target.value)}
                 />
                 <Button size="lg" block>Увійти</Button>
