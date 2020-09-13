@@ -3,7 +3,7 @@ import styles from "./LoginForm.module.css"
 import Link from 'next/link'
 import Input from "../../ui/Input/Input";
 import Button from "../../ui/Button/Button";
-import {error} from "next/dist/build/output/log";
+import axios from 'axios'
 
 export default function LoginForm() {
 
@@ -42,10 +42,14 @@ export default function LoginForm() {
         }
     }
 
+    async function handleSubmit(event) {
+        event.preventDefault()
 
+        await axios.post('/api/auth/registration', {login: loginValue, password: passwordValue})
+    }
 
     return (
-        <form className={styles.LoginForm} onSubmit={(event) => event.preventDefault()}>
+        <form className={styles.LoginForm} onSubmit={(event) => handleSubmit(event)}>
             <h2>Вхід до акаунту</h2>
             <span>Сплануй свій раціон на тиждень за лічені хвилини.</span>
             <form>
@@ -72,7 +76,7 @@ export default function LoginForm() {
                     errorMessage={passwordErrorMessage}
                     onChange={(event) => handlerPassword(event.target.value)}
                 />
-                <Button size="lg" block>Увійти</Button>
+                <Button size="lg" type="submit" block>Увійти</Button>
             </form>
             <small>Ще не маєте облікового запису? <Link href="#">Зареєструватися</Link>.</small>
         </form>

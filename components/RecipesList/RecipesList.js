@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./RecipesList.module.css"
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import RecipeCard from "../RecipeCard/RecipeCard";
 
 function RecipesList() {
     const recipes = [
@@ -14,8 +14,8 @@ function RecipesList() {
         <div className={style.RecipesList}>
             { recipes.map((recipe, index) => {
                     return (
-                        <div>
-                            <RecipeCard key={index} img={recipe.img} name={recipe.name} description={recipe.description}/>
+                        <div key={index}>
+                            <RecipeCard img={recipe.img} name={recipe.name} description={recipe.description}/>
                         </div>
                     )
 

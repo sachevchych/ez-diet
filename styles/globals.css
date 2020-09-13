@@ -57,3 +57,39 @@ a {
     box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, .15);
 }
 
+/* Typography */
+
+small {
+    font-size: .9rem;
+}
+
+.text-muted {
+    color: #869ab8;
+}
+
+/* Margin */
+
+.mt-0 {
+    margin-top: 0 !important;;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;;
+}
+
+.mt-1 {
+    margin-top: 1rem !important;
+    display: block;
+}
+
+.mb-1 {
+    margin-bottom: 1rem !important;;
+    display: block;
+}
+
+.mb-2 {
+    margin-bottom: 2rem !important;;
+    display: block;
+}
+
+

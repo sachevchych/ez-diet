@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: .3rem;
 }
 
 .Label {
@@ -23,11 +23,11 @@
 }
 
 .Input:active {
-    border: 1px solid #F29F05;
+    border: 1px solid #4A9263;
 }
 
 .Input:focus {
-    border: 1px solid #F29F05;;
+    border: 1px solid #4A9263;;
     outline: none;
 }
 
@@ -36,6 +36,8 @@ small.error {
     text-align: left;
     margin-top: .3rem;
     font-size: 12px;
+    line-height: 14px;
+    min-height: 14px;
 }
 
 .inputError {

@@ -4,7 +4,7 @@ import Button from "../../ui/Button/Button";
 import Logo from "../../ui/Logo/Logo";
 import {faUser} from '@fortawesome/free-solid-svg-icons'
 import Modal from "../../ui/Modal/Modal";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import LoginForm from "../LoginForm/LoginForm";
 
 function Header() {
     const [displayModal, setDisplayModal] = useState(false)

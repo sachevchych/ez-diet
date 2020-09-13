@@ -5,12 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Button(props) {
     const classes = [
         styles.Button,
+        props.className ? props.className : null,
         props.size ? styles[props.size] : null,
         props.block ? styles.block : null
     ]
 
     return (
-        <button className={classes.join(' ')} onClick={props.onClick}>
+        <button type={props.type ? props.type : 'button'} className={classes.join(' ')} onClick={props.onClick}>
             { props.icon ? <FontAwesomeIcon icon={props.icon} className={styles.icon} /> : null }
             {props.children}
         </button>

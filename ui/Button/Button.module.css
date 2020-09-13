@@ -6,7 +6,7 @@
     border-radius: .25rem;
     border: none;
     margin: 0.2rem 0;
-    background-color: #F29F05;
+    background-color: #4a9263;
     color: white;
     font-weight: 300;
     transition: background-color .15s ease-in-out;
@@ -19,7 +19,7 @@
 }
 
 .Button:hover {
-    background-color: #F27405;
+    background-color: #408056;
 }
 
 .lg {
