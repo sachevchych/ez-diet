@@ -1,0 +1,107 @@
+.Select {
+    margin-bottom: 1.5rem;
+}
+
+.SelectInputGroup {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.Label {
+    text-align: left;
+    margin-bottom: .5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.SelectInputWrap {
+    display: block;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.SelectInput {
+    display: block;
+    line-height: 1.6;
+    border: 1px solid #f1f4f8;
+    padding: .8125rem 2.5rem .8125rem 1.25rem;
+    border-radius: .4rem;
+    font-weight: 400;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+}
+
+.SelectInputSuffix {
+    position: absolute;
+    height: 100%;
+    width: 2rem;
+    top: 0;
+    right: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SelectInputIcon {
+    transition: all .3s ease-out;
+    transform: rotate(180deg);
+    color: #c0c4cc;
+}
+
+.SelectInputIconOpen {
+    transform: rotate(0deg) !important;
+}
+
+.SelectDropdownWrap {
+    position: relative;
+    width: 100%;
+}
+
+.SelectDropdown {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    display: none;
+    transition: all .3s ease-out;
+    z-index: 2;
+}
+
+.SelectDropdownOpen {
+    display: block;
+}
+
+.SelectOptionList {
+    margin: 0;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #f1f4f8;
+    padding: .8125rem 0;
+    border-radius: .4rem;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 2.5rem;
+}
+
+.SelectOption {
+    cursor: pointer;
+    padding: 0 1rem;
+}
+
+.SelectOptionSelected {
+    background-color: #dbefd4;
+    color: #4A9263;
+}
+
+.SelectOption:hover {
+    background-color: #C7DEC0;
+    color: #4A9263;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import styles from "./Input.module.css"
+import {faChevronUp} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 /*
 * type - string - default: text
@@ -21,7 +23,7 @@ export default function Input(props) {
     const validate = props.validate || false
     const type = props.type || 'text'
     const classes = [
-        styles.Input,
+        styles.Input
     ]
 
     if (props.valid && touched) classes.push(styles.inputSuccess)
@@ -38,8 +40,9 @@ export default function Input(props) {
                 value={props.value}
                 onChange={props.onChange}
                 onBlur={() => setTouched(true)}
+                readOnly={props.readOnly}
             />
-            <small className={styles.error}>{touched ? props.errorMessage : null}</small>
+            <small className={styles.Message}>{touched ? props.errorMessage : null}</small>
         </div>
     )
 }

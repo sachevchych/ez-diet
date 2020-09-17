@@ -21,7 +21,7 @@ app.prepare().then(() => {
     mongoose.connect(keys.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
-    })
+    }).then(console.log("MongoDB connected!"))
 
     server.get('/', (req, res) => {
         return app.render(req, res, '/home', req.query)
@@ -31,7 +31,11 @@ app.prepare().then(() => {
         return app.render(req, res, '/registration', req.query)
     })
 
-    server.use('/api/auth', require('./routes/auth.router'))
+    server.get('/create-recipe', (req, res) => {
+        return app.render(req, res, '/create-recipe', req.query)
+    })
+
+    server.use('/api/auth', require('./routes/auth.routes'))
     
 
     server.all('*', (req, res) => {

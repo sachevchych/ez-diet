@@ -13,6 +13,7 @@ function Header() {
         <header className={styles.HeaderWrap}>
             <div className="container">
                 <div className={styles.Header}>
+
                     <Logo color="main" fontSize={24}/>
                     <Button icon={faUser} onClick={() => {setDisplayModal(true)}}>Увійти в аккаунт</Button>
                     {

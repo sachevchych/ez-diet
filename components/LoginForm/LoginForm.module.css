@@ -24,12 +24,3 @@
     margin: 2rem 0;
     font-size: .8rem;
 }
-
-.LoginForm > small a {
-    color: #F29F05 !important;
-}
-
-.LoginForm > small a:hover {
-    color: #F27405 !important;
-    text-decoration: underline;
-}

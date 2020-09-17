@@ -1,9 +1,9 @@
 import React, {useState} from "react"
 import styles from "./LoginForm.module.css"
-import Link from 'next/link'
 import Input from "../../ui/Input/Input";
 import Button from "../../ui/Button/Button";
 import axios from 'axios'
+import Link from "../../ui/Link/Link";
 
 export default function LoginForm() {
 
@@ -78,7 +78,7 @@ export default function LoginForm() {
                 />
                 <Button size="lg" type="submit" block>Увійти</Button>
             </form>
-            <small>Ще не маєте облікового запису? <Link href="#">Зареєструватися</Link>.</small>
+            <small>Ще не маєте облікового запису? <Link href="/registration" color="main">Зареєструватися</Link>.</small>
         </form>
     )
 }

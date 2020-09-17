@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useState} from "react"
 import styles from './RegistrationForm.module.css'
-import Input from "../../ui/Input/Input";
-import Button from "../../ui/Button/Button";
+import Input from "../../ui/Input/Input"
+import Button from "../../ui/Button/Button"
+import axios from 'axios'
+import {connect} from "react-redux";
+import {registration} from "../../store/actions/registration.action";
 
-export default function RegistrationFrom() {
+function RegistrationForm(props) {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -19,6 +22,9 @@ export default function RegistrationFrom() {
     const [passwordMessage, setPasswordMessage] = useState(null)
     const [passwordRepeatMessage, setPasswordRepeatMessage] = useState(null)
 
+    const [loading, setLoading] = useState(false)
+    const [message, setMessage] = useState(null)
+
     function handlerName(value) {
         setName(value)
         if (!value) {
@@ -32,8 +38,7 @@ export default function RegistrationFrom() {
 
     function handlerEmail(value) {
         setEmail(value)
-        const regexp = /@/
-        if (!regexp.test(value)) {
+        if (!/@/.test(value)) {
             setEmailValid(false)
             setEmailMessage('Пошта повинна містити символ @')
         } else {
@@ -50,19 +55,33 @@ export default function RegistrationFrom() {
         } else {
             setPasswordValid(true)
             setPasswordMessage(null)
+            passwordValidator(value, passwordRepeat)
         }
     }
 
     function handlerPasswordRepeat(value) {
-        if (value) setPasswordRepeat(value)
+        setPasswordRepeat(value)
+        passwordValidator(password, value)
+    }
 
-        if (value !== password) {
-            setPasswordRepeatValid(false)
-            setPasswordRepeatMessage('Паролі не співпадають')
-        } else {
+    function passwordValidator(password, passwordRepeat) {
+        if (password === passwordRepeat) {
             setPasswordRepeatValid(true)
             setPasswordRepeatMessage(null)
+        } else {
+            setPasswordRepeatValid(false)
+            setPasswordRepeatMessage('Паролі не співпадають')
         }
+    }
+
+    function registrationHandler(event) {
+        if (!nameValid && !emailValid && !passwordValid && !passwordRepeatValid) {
+            return setMessage('Будь ласка, заповніть всі поля правильно.')
+        }
+        setLoading(true)
+        props.registration(name, email, password)
+        setLoading(false)
+        event.preventDefault()
     }
 
     return (
@@ -105,9 +124,30 @@ export default function RegistrationFrom() {
                        errorMessage={passwordRepeatMessage}
                        onChange={(event) => handlerPasswordRepeat(event.target.value)}
                 />
-                <Button type="submit" className="mt-1" size="lg" onClick={(event) => event.preventDefault()}
-                        block>Зареєструватися</Button>
+                <Button type="submit"
+                        className="mt-1"
+                        size="lg"
+                        onClick={(event) => registrationHandler(event)}
+                        loading={loading}
+                        block
+                >Зареєструватися</Button>
+                <small className="mt-1" style={{"color":"#CF5D53"}}>{message}</small>
             </form>
         </div>
     )
 }
+
+function mapStateToProps(state) {
+    return {
+
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        registration: (name, email, password) => dispatch(registration(name, email, password))
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm)

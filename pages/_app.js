@@ -1,7 +1,30 @@
+import React from "react";
+import {createStore, compose, applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
+import thunk from 'redux-thunk'
+import rootReducer from '../store/reducers/rootReducer'
 import '../styles/globals.css'
 
+const composeEnhancers =
+    typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+            // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+        }) : compose;
+
+const store = createStore(
+    rootReducer,
+    composeEnhancers(
+        applyMiddleware(thunk)
+    )
+)
+
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+  )
 }
 
 export default MyApp

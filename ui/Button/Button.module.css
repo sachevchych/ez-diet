@@ -14,6 +14,11 @@
     font-size: .9rem;
 }
 
+.Button:disabled {
+    background-color: #C7DEC0 !important;
+    color: #4a9263 !important;
+}
+
 .Button:focus {
     outline: none;
 }
