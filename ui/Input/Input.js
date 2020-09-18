@@ -20,13 +20,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default function Input(props) {
     const [touched, setTouched] = useState(false)
-    const validate = props.validate || false
+    let validate = false
+    if (props.hasOwnProperty('valid')) validate = true
     const type = props.type || 'text'
     const classes = [
         styles.Input
     ]
 
-    if (props.valid && touched) classes.push(styles.inputSuccess)
+    if (validate && props.valid && touched) classes.push(styles.inputSuccess)
     if (validate && !props.valid && touched) classes.push(styles.inputError)
 
     return (
@@ -42,7 +43,7 @@ export default function Input(props) {
                 onBlur={() => setTouched(true)}
                 readOnly={props.readOnly}
             />
-            <small className={styles.Message}>{touched ? props.errorMessage : null}</small>
+            { validate ? <small className={styles.Message}>{touched ? props.errorMessage : null}</small> : null}
         </div>
     )
 }

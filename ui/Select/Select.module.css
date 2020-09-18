@@ -66,13 +66,17 @@
     top: 5px;
     left: 0;
     width: 100%;
-    display: none;
-    transition: all .3s ease-out;
+    transition: all .3s ease-in-out;
     z-index: 2;
+    opacity: 20;
+    overflow: hidden;
+    max-height: 0;
 }
 
 .SelectDropdownOpen {
-    display: block;
+    opacity: 100;
+    overflow: hidden;
+    max-height: 400px;
 }
 
 .SelectOptionList {

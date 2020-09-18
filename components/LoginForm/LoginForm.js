@@ -6,46 +6,29 @@ import axios from 'axios'
 import Link from "../../ui/Link/Link";
 
 export default function LoginForm() {
+    const [email, setEmail] = useState({value: '1', valid: false, message: ''})
+    const [password, setPassword] = useState({value: '1', valid: false, message: ''})
 
-    const [loginValue, setLoginValue] = useState("")
-    const [loginValid, setLoginValid] = useState(false)
-    const [loginIsTouched, setLoginIsTouched] = useState(false)
-    const [loginErrorMessage, setLoginErrorMessage] = useState(null)
-
-    function handlerLogin(login) {
-        setLoginValue(login)
-        setLoginIsTouched(true)
-        if (login.includes("@") && login.includes(".")) {
-            setLoginValid(true)
-            setLoginErrorMessage(null)
+    function emailHandler(value) {
+        if (!value.includes("@") && !value.includes(".")) {
+            setEmail({value, valid: false, message: 'Некоректна електронна адреса'})
         } else {
-            setLoginValid(false)
-            setLoginErrorMessage('Введіть електронну пошту')
+            setEmail({value, valid: true, message: ''})
         }
 
     }
 
-    const [passwordValue, setPasswordValue] = useState("")
-    const [passwordValid, setPasswordValid] = useState(false)
-    const [passwordIsTouched, setPasswordIsTouched] = useState(false)
-    const [passwordErrorMessage, setErrorMessage] = useState(null)
-
-    function handlerPassword(password) {
-        setPasswordValue(password)
-        setPasswordIsTouched(true)
-        if (password.length < 6) {
-            setPasswordValid(false)
-            setErrorMessage("Пароль не може бути менше 6 символів")
+    function passwordHandler(value) {
+        if (value.length < 6) {
+            setPassword({value, valid: false, message: "Пароль не може бути менше 6 символів"})
         } else {
-            setPasswordValid(true)
-            setErrorMessage('')
+            setPassword({value, valid: true, message: ""})
         }
     }
 
     async function handleSubmit(event) {
         event.preventDefault()
-
-        await axios.post('/api/auth/registration', {login: loginValue, password: passwordValue})
+        await axios.post('/api/auth/login', {email: email.value, password: password.value})
     }
 
     return (
@@ -54,27 +37,23 @@ export default function LoginForm() {
             <span>Сплануй свій раціон на тиждень за лічені хвилини.</span>
             <form>
                 <Input
-                    type="text"
-                    id="login"
-                    label="Електронна адреса:"
+                    type="email"
+                    id="email"
+                    label="Електронна адреса"
                     placeholder="example@gmail.com"
-                    value={loginValue}
-                    valid={loginValid}
-                    touched={loginIsTouched}
-                    errorMessage={loginErrorMessage}
-                    onChange={(event) => handlerLogin(event.target.value)}
+                    valid={email.valid}
+                    errorMessage={email.message}
+                    onChange={(event) => emailHandler(event.target.value)}
 
                 />
                 <Input
                     type="password"
                     id="password"
-                    label="Пароль:"
+                    label="Пароль"
                     placeholder="Введіть пароль"
-                    value={passwordValue}
-                    valid={passwordValid}
-                    touched={passwordIsTouched}
-                    errorMessage={passwordErrorMessage}
-                    onChange={(event) => handlerPassword(event.target.value)}
+                    valid={password.valid}
+                    errorMessage={password.message}
+                    onChange={(event) => passwordHandler(event.target.value)}
                 />
                 <Button size="lg" type="submit" block>Увійти</Button>
             </form>

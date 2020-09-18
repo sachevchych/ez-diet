@@ -1,8 +1,10 @@
 const express = require('express')
 const next = require('next')
 const passport = require('passport')
+const jwtStrategy = require('./middleware/passport-strategy')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const session = require('express-session')
 
 const keys = require('./keys/index')
 const port = parseInt(process.env.PORT, 10) || 3000
@@ -13,10 +15,16 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
     const server = express()
 
-    server.use(passport.initialize())
-
-    server.use(bodyParser.json())
     server.use(bodyParser.urlencoded({ extended: true}))
+    server.use(bodyParser.json())
+    server.use(session({
+        secret: 'passport-tutorial',
+        cookie: { maxAge: 60000 },
+        resave: false,
+        saveUninitialized: false
+    }))
+    server.use(passport.initialize())
+    passport.use(jwtStrategy)
 
     mongoose.connect(keys.MONGO_URI, {
         useNewUrlParser: true,

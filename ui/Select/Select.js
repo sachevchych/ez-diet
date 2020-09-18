@@ -8,17 +8,6 @@ function Select(props) {
     const [value, setValue] = useState("Number 4");
     const [hidden, setHidden] = useState(true);
 
-    const iconStyles = [
-        styles.SelectInputIcon,
-        hidden ? null : styles.SelectInputIconOpen
-    ]
-
-    const dropDownStyles = [
-        styles.SelectDropdown,
-        "shadow",
-        hidden ? null : styles.SelectDropdownOpen
-    ]
-
     function selectHandler(target) {
         setValue(target.textContent)
         dropDown()
@@ -44,14 +33,14 @@ function Select(props) {
                     />
                     <span className={styles.SelectInputSuffix}>
                         <FontAwesomeIcon
-                            className={iconStyles.join(' ')}
+                            className={[styles.SelectInputIcon, !hidden ? styles.SelectInputIconOpen : null].join(' ')}
                             icon={faChevronUp} />
                     </span>
                 </div>
             </div>
 
             <div className={styles.SelectDropdownWrap}>
-                <div className={dropDownStyles.join(' ')}>
+                <div className={[styles.SelectDropdown, "shadow", hidden ? null : styles.SelectDropdownOpen].join(' ')}>
                     <ul className={styles.SelectOptionList}>
                         {!props.data ? null : props.data.map((option, key) => {
                             return <li
